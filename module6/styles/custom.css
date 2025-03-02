@@ -1,0 +1,10 @@
+
+.border-success {
+    border-style: solid;
+    border-color: green;
+}
+
+.border-danger {
+    border-style: solid;
+    border-color: red;
+}
