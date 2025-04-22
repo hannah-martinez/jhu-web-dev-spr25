@@ -1,0 +1,12 @@
+<h2>Categories</h2>
+<ul>
+  <li ng-repeat="category in cc.categories"
+      ui-sref="category({categoryShortName: category.short_name})">
+        <span style="color: blue; text-decoration: blue underline; cursor: pointer">
+          {{ category.name }}
+        </span>
+  </li>
+</ul>
+
+<style>
+</style>
