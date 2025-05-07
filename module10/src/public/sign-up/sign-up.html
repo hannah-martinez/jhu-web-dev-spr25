@@ -1,0 +1,74 @@
+<div class="container">
+  <h2 id="menu-categories-title">Sign Up For Our Newsletter</h2>
+
+  <fieldset>
+    <form name='signUpForm' novalidate>
+
+      <input type="text" name="firstName" placeholder="First Name"
+        ng-model="signUpCtrl.firstName"
+        required
+        minlength="4"
+        ng-maxlength="10">
+        <span
+          ng-if="(signUpForm.firstName.$error.minlength || signUpForm.firstName.$error.required) && signUpForm.firstName.$touched">
+          First name must be at least 4 characters long
+        </span>
+        <span ng-if="signUpForm.firstName.$error.maxlength && signUpForm.firstName.$touched">
+          First name must not be longer than 10 characters
+        </span>
+        <br>
+
+      <input type="text" name="lastName" placeholder="Last Name"
+        ng-model="signUpCtrl.lastName"
+        required
+        minlength="4"
+        ng-maxlength="10">
+        <span
+          ng-if="(signUpForm.lastName.$error.minlength || signUpForm.lastName.$error.required) && signUpForm.lastName.$touched">
+          Last name must be at least 4 characters long
+        </span>
+        <span ng-if="signUpForm.lastName.$error.maxlength && signUpForm.lastName.$touched">
+          Last name must not be longer than 10 characters
+        </span>
+        <br>
+
+      <input type="email" name="email" placeholder="Email"
+        ng-model="signUpCtrl.email"
+        required>
+        <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+        <br>
+
+      <input type="text" name="phone" placeholder="Phone ###-###-####"
+        ng-model="signUpCtrl.phone"
+        required
+        pattern="(\d{3})-(\d{3})-(\d{4})">
+        <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
+        <br>
+
+      <input type="text" name="faveDish" placeholder="Favorite Dish e.g. A1"
+        required
+        menu-item-validation
+        ng-model="signUpCtrl.faveDish">
+        <span ng-if="signUpForm.faveDish.$invalid && signUpForm.faveDish.$touched">
+          No such menu number exists.
+        </span>
+      <br>
+
+      <button
+        ng-disabled="signUpForm.$invalid"
+        ng-click="signUpCtrl.submit(signUpCtrl.firstName, signUpCtrl.lastName, signUpCtrl.email, signUpCtrl.phone, signUpCtrl.faveDish)">
+        Submit
+      </button>
+
+    </form>
+  </fieldset>
+
+  <div id="info" ng-if="signUpCtrl.completed">
+    Your information has been saved
+  </div>
+
+</div>
